@@ -1,0 +1,152 @@
+:root {
+   /* colors */
+   --c-orange-l: hsl(31, 77%, 52%);
+   --c-cyan-d: hsl(184, 100%, 22%);
+   --c-cyan-dk: hsl(179, 100%, 13%);
+   --c-w-tr: hsla(0, 0%, 100%, 0.75); /*paragraphs*/
+   --c-gray-l: hsl(0, 0%, 95%); /*background, headings, buttons*/
+   /* fonts */
+   --f-1: 'Big Shoulders Display', cursive;
+   --f-2:'Lexend Deca', sans-serif;
+   /* widths */
+   --mobile-w: 23.4375rem;
+   --desktop-w: 90rem;
+   --border: 2px solid red;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    base                                    */
+/* -------------------------------------------------------------------------- */
+*,
+*::after,
+*::before {
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
+}
+body {
+   box-sizing: border-box;
+   font-family: var(--f-2);
+   font-weight: 400;
+   line-height: 1.6;
+   background-color: var(--c-gray-l);
+}
+.color-orange {
+   color: var(--c-orange-l);
+}
+.color-cyan-dark {
+   color: var(--c-cyan-d);
+}
+.color-cyan-darkest {
+   color: var(--c-cyan-dk);
+}
+.bg-orange {
+   background-color: var(--c-orange-l);
+}
+.bg-cyan-dark {
+   background-color: var(--c-cyan-d);
+}
+.bg-cyan-darkest {
+   background-color: var(--c-cyan-dk);
+}
+/* -------------------------------------------------------------------------- */
+/*                                 components                                 */
+/* -------------------------------------------------------------------------- */
+/* button */
+.btn {
+   text-decoration: none;
+   border: none;
+   cursor: pointer;
+   padding: .85rem 1.9rem;
+   transition: all 300ms ease;
+}
+.btn-white {
+   background-color: var(--c-gray-l);
+   border: .15rem solid var(--c-w-tr);
+}
+.btn-white:hover {
+   background-color: transparent;
+   color: var(--c-w-tr);
+}
+.btn-rounded {
+   border-radius: 50rem;
+}
+
+/* card */
+.card {
+   padding: 3rem 3rem 3.5rem 3rem;
+   line-height: 1.9;
+   font-size: 15px;
+   color: var(--c-w-tr);
+}
+.card__title {
+   font-family: var(--f-1);
+   font-size: 2.5rem;
+   font-weight: 700;
+   text-transform: uppercase;
+   color: var(--c-gray-l);
+   margin-bottom: 1.5rem;
+}
+.card__title.sedans::before,
+.card__title.suvs::before,
+.card__title.luxury::before {
+   content: '';
+   display: block;
+   height: 2.5rem;
+   width: 100%;
+   background-size: contain;
+   margin-bottom: 1.5rem;
+}
+.card__title.sedans::before {
+   background: url('../images/icon-sedans.svg')left no-repeat;
+}
+.card__title.suvs::before {
+   background: url('../images/icon-suvs.svg')left no-repeat;
+}
+.card__title.luxury::before {
+   background: url('../images/icon-luxury.svg')left no-repeat;
+}
+.card__description {
+   margin-bottom: 3rem;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   layout                                   */
+/* -------------------------------------------------------------------------- */
+.cards-wrapper {
+   border-radius: .5rem;
+   overflow: hidden;
+   max-width: calc(var(--mobile-w) - 3rem);
+   margin: 0 auto;
+   transition: all 300ms ease-in-out;
+}
+.container {
+   padding: 5rem 1.5rem;
+   min-height: 100vh;
+}
+/* -------------------------------------------------------------------------- */
+/*                                mediaqueries                                */
+/* -------------------------------------------------------------------------- */
+@media only screen and (min-width: 576px) {
+   .card__description {
+      margin-bottom: 6rem;
+   }
+}
+@media only screen and (min-width: 992px) {
+   .card {
+      width: calc(var(--mobile-w) - 3rem);
+   }
+   .cards-wrapper {
+      max-width: unset;
+      /* flexbox */
+      display: flex;
+      /* positioning */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+   }
+   .container {
+      position: relative;
+      padding: unset;
+   }
+}
